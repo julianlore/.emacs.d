@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: delimited brackets
+# key: ()
+# --
+\left(${1}\right)

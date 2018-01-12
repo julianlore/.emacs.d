@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sumi
+# key: sumi
+# --
+\sum_{i=1}^n
