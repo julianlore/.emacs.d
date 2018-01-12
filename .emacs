@@ -101,6 +101,10 @@
 ;; Company mode
 (company-mode 1)
 
+;; Auto-load yasnippet
+(require 'yasnippet)
+(yas-global-mode t)
+
 ;;
 (add-hook 'org-mode-hook 'org-ac)
 
