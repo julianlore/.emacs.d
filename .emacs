@@ -24,7 +24,7 @@
  '(org-latex-remove-logfiles t)
  '(package-selected-packages
    (quote
-    (matlab-mode org-edit-latex org-trello ox-asciidoc ox-gfm ox-html5slide ox-hugo ox-ioslide ox-minutes ox-pandoc mediawiki ox-mediawiki ac-clang ac-html ac-math aggressive-indent solarized-theme monokai-theme latex-extra latex-math-preview latex-pretty-symbols latex-preview-pane org-ac org-beautify-theme company-auctex flyspell-popup tuareg markdown-preview-mode org evil markdown-preview-eww markdown-mode+ markdown-mode auctex)))
+    (focus helm indent-guide rainbow-delimiters smex sublimity workgroups2 beacon rainbow-mode matlab-mode org-edit-latex org-trello ox-asciidoc ox-gfm ox-html5slide ox-hugo ox-ioslide ox-minutes ox-pandoc mediawiki ox-mediawiki ac-clang ac-html ac-math aggressive-indent solarized-theme monokai-theme latex-extra latex-math-preview latex-pretty-symbols latex-preview-pane org-ac org-beautify-theme company-auctex flyspell-popup tuareg markdown-preview-mode org evil markdown-preview-eww markdown-mode+ markdown-mode auctex)))
  '(undo-tree-auto-save-history t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -176,4 +176,37 @@
 ;;     (define-key LaTeX-mode-map (kbd "\C-f") nil))) 
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings 'meta))
-(require 'merlin)
+;; (require 'merlin)
+(require 'helm-config)
+
+(require 'focus)
+(focus-mode 1)
+
+(require 'indent-guide)
+(indent-guide-global-mode)
+
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(require 'smex) ; Not needed if you use package.el
+(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+					; when Smex is auto-initialized on its first run.
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+(require 'sublimity)
+(require 'sublimity-scroll)
+;; (require 'sublimity-map) ;; experimental
+(require 'sublimity-attractive)
+
+(sublimity-mode 1)
+
+(require 'workgroups2)
+;; Change some settings
+(workgroups-mode 1)        ; put this one at the bottom of .emacs
+
+(beacon-mode 1)
+
+(require 'rainbow-mode)
+(rainbow-mode 1)
