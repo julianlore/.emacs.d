@@ -178,6 +178,7 @@
   (windmove-default-keybindings 'meta))
 ;; (require 'merlin)
 (defvar latex-mode)
+(defvar latex-extra-mode)
 (require 'helm-config)
 
 (require 'focus)
