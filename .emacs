@@ -53,6 +53,10 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
 
+;; Fix reference to free variable when using workgroups2 to restore open files
+(defvar latex-mode)
+(defvar latex-extra-mode)
+
 ;; Enable these modes by default
 (electric-pair-mode 1)
 (show-paren-mode 1)
@@ -177,8 +181,6 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings 'meta))
 ;; (require 'merlin)
-(defvar latex-mode)
-(defvar latex-extra-mode)
 (require 'helm-config)
 
 (require 'focus)
