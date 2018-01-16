@@ -177,6 +177,7 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings 'meta))
 ;; (require 'merlin)
+(defvar latex-mode)
 (require 'helm-config)
 
 (require 'focus)
