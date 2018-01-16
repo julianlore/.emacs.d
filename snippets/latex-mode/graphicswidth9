@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: graphicswidth9
+# key: grw
+# --
+\includegraphics[width=.9\textwidth]{${1:image}}
