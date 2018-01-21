@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: underbrace
+# key: ub
+# --
+\underbrace{${1:contents}}_{${2:under}}

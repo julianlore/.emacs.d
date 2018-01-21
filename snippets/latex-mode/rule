@@ -2,4 +2,4 @@
 # name: rule
 # key: rule
 # --
-\\ \noindent \rule{\textwidth}{0.5pt}
+\\\\ \noindent \rule{\textwidth}{0.5pt}
