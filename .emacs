@@ -199,10 +199,10 @@
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-(require 'sublimity)
-(require 'sublimity-scroll)
+;; (require 'sublimity)
+;; (require 'sublimity-scroll)
 ;; (require 'sublimity-map) ;; experimental
-(require 'sublimity-attractive)
+;; (require 'sublimity-attractive)
 
 (sublimity-mode 1)
 
