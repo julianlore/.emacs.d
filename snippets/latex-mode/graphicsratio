@@ -2,4 +2,4 @@
 # name: graphicsratio
 # key: grr
 # --
-\includegraphics[ratio=${1:ratio}]{${2:image}}
+\includegraphics[scale=${1:scale}]{${2:image}}
