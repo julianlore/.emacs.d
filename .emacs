@@ -207,9 +207,9 @@
 
 (sublimity-mode 1)
 
-(require 'workgroups2)
+;; (require 'workgroups2)
 ;; Change some settings
-(workgroups-mode 1)        ; put this one at the bottom of .emacs
+;; (workgroups-mode 1)        ; put this one at the bottom of .emacs
 
 (beacon-mode 1)
 
