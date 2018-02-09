@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: prodi
+# key: prodi
+# --
+\prod_{i=1}^{n}

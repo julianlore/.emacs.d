@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: p_hat_n
+# key: ph
+# --
+\hat{p}_n

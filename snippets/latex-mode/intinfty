@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: intinfty
+# key: ininf
+# --
+\int_{-\infty}^{\infty}
