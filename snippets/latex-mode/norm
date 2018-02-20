@@ -2,4 +2,4 @@
 # name: norm
 # key: norm
 # --
-\left\lVert ${1} \right\rVert
+\left\lVert ${1} \right\rVert_${2}

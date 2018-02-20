@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: xin
+# key: xin
+# --
+${1:x}_1,$1_2,\ldots,$1_${2:n}
