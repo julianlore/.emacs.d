@@ -147,8 +147,8 @@
 (global-aggressive-indent-mode 1)
 (ac-config-default)
 ;; C
-;; (setq-default c-basic-offset 4 c-default-style "linux")
-;; (setq-default tab-width 4 indent-tabs-mode t)
+(setq-default c-basic-offset 4 c-default-style "linux")
+(setq-default tab-width 4 indent-tabs-mode t)
 ;; (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 (global-set-key "\C-x\C-z" 'compile)
 ;; The following either compiles with a makefile or makes command to compile current file as its name
