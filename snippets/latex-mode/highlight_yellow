@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: highlight_yellow
+# key: hye
+# --
+\colorbox{yellow}{${1}}

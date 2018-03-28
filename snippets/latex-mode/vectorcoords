@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: vectorcoords
+# key: vc
+# --
+\langle ${1} \rangle

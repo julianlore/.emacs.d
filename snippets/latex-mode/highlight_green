@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: highlight_green
+# key: hgr
+# --
+\colorbox{green}{${1}}

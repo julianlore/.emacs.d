@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: highlight_red
+# key: hred
+# --
+\colorbox{red}{${1}}

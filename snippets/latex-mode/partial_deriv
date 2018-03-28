@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: partial_deriv
+# key: pd
+# --
+\frac{\partial{$1}}{\partial{$2}}
