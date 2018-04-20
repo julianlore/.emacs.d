@@ -218,3 +218,5 @@
 
 ;; Shortcut to browse kill ring
 (global-set-key (kbd "C-x p") 'browse-kill-ring)
+;; Change smerge command prefix, for dealing with git
+(setq smerge-command-prefix "\C-cv")
