@@ -132,10 +132,10 @@
 
 ;; Tuareg
 (add-hook 'tuareg-interactive-mode-hook
-	  (lambda ()
-	    (local-set-key (kbd "<up>") 'comint-previous-input)
-	    )
-	  )
+		  (lambda ()
+			(local-set-key (kbd "<up>") 'comint-previous-input)
+			)
+		  )
 
 ;; Commenting
 ;; C-x C-/ comments
@@ -143,9 +143,8 @@
 
 ;; Fonts
 (add-to-list 'default-frame-alist
-	     '(font . "Fira Code-12"))
+			 '(font . "Fira Code-12"))
 
-(setq org-agenda-files (list "~/Dropbox/1.Org"))
 (global-aggressive-indent-mode 1)
 (ac-config-default)
 ;; C
@@ -173,11 +172,11 @@
 (electric-pair-mode)
 (add-hook 'LaTeX-mode-hook
           '(lambda ()
-	     (define-key LaTeX-mode-map (kbd "$") 'self-insert-command)))
+			 (define-key LaTeX-mode-map (kbd "$") 'self-insert-command)))
 
 (add-hook 'org-mode-hook
           '(lambda ()
-	     (define-key local-set-key (kbd "$") 'self-insert-command)))
+			 (define-key local-set-key (kbd "$") 'self-insert-command)))
 ;; (eval-after-load 'LaTeX
 ;;   (progn
 ;;     (define-key LaTeX-mode-map (kbd "\C-f") nil))) 
@@ -222,3 +221,10 @@
 (global-set-key (kbd "C-x p") 'browse-kill-ring)
 ;; Change smerge command prefix, for dealing with git
 (setq smerge-command-prefix "\C-cv")
+
+;; Add ox-hugo support, export org files to Hugo compatible md
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
+
+;; Secondary file to load for things not included in the git repository/local customizations
+(load-file "~/.emacs.local")
