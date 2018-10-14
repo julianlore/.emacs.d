@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lbracket
+# key: lb
+# --
+$\llbracket$ ${1} $\rrbracket$

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: simple frame
+# key: sf
+# --
+\begin{mdframed}[style=SimpleFrame]
+	${1}
+\end{mdframed}

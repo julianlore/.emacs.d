@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: textbrace
+# key: tb
+# --
+\{${1}$\in$D$_{\text{${2}}}$: ${1}\}

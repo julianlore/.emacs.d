@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: text square brackets bold
+# key: tsb
+# --
+\textbf{[}$_{\textbf{${1}}}$ ${2}\textbf{]}

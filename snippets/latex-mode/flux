@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: flux
+# key: flux
+# --
+\vec{F}\cdot \hat{n}\ dS

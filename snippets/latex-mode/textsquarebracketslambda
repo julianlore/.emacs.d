@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: text square brackets lambda
+# key: tsl
+# --
+\text{[}$\lambda$${1}: ${1}$\in$D$_{\text{${2}}}$\text{]}

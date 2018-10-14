@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: gb4e example
+# key: ex
+# --
+\begin{exe}
+\ex\label{ex${1}}
+${2}
+\end{exe}
