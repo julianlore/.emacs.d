@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: assumption
+# key: asu
+# --
+\AXC{}
+\RL{${1:u}}
+\UIC{${2:assumption}}
