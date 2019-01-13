@@ -226,5 +226,8 @@
 (with-eval-after-load 'ox
   (require 'ox-hugo))
 
+;; Add auto-fill to text-mode by default
+(add-hook 'text-mode-hook 'auto-fill-mode)
+
 ;; Secondary file to load for things not included in the git repository/local customizations
 (load-file "~/.emacs.local")
