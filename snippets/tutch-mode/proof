@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: proof
+# key: prf
+# --
+${1:proof} ${2:name} : ${3:thm}
+begin
+${3:thm}
+end;
