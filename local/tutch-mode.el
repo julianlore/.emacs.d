@@ -6,7 +6,8 @@
 (defvar tutch-mode-hook nil)
 
 (setq tutch-compile-command "tutch -v")
-(setq tutch-shell-name "csh")
+(setq tutch-shell-name "zsh")
+(setq comment-start "%")
 
 (require 'comint)
 
