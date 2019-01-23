@@ -63,6 +63,9 @@
 (defvar latex-mode)
 (defvar latex-extra-mode)
 
+;; Enable column-number-mode by default
+(setq column-number-mode t)
+
 ;; Enable these modes by default
 (electric-pair-mode 1)
 (show-paren-mode 1)
