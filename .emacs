@@ -122,6 +122,9 @@
 (add-hook 'org-mode-hook 'org-ac)
 
 ;; More LaTeX stuff
+;; Default to xetex and compile to pdf
+(setq-default TeX-engine 'xetex)
+(setq-default TeX-PDF-mode t)
 ;; Don't override font-map in latex-extra-mode
 ;; Disable remap of C-c C-f from latex-extra-mode
 (defvar latex/override-font-map nil)
