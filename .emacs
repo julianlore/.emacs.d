@@ -248,5 +248,14 @@
 ;; Load tutch-mode from local elisp dir
 (load "tutch-mode")
 
+;; R stuff
+;; Allow evaluation of R and latex
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((R . t)
+   (latex . t)))
+;; No confirmation for evaluation
+(setq org-confirm-babel-evaluate nil)
+
 ;; Secondary file to load for things not included in the git repository/local customizations
 (load-file "~/.emacs.local")
