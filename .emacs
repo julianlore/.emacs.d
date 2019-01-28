@@ -12,20 +12,20 @@
  '(TeX-source-correlate-mode t)
  '(TeX-view-program-selection
    (quote
-	(((output-dvi has-no-display-manager)
-	  "dvi2tty")
-	 ((output-dvi style-pstricks)
-	  "dvips and gv")
-	 (output-dvi "xdvi")
-	 (output-pdf "Atril")
-	 (output-html "xdg-open"))))
+    (((output-dvi has-no-display-manager)
+      "dvi2tty")
+     ((output-dvi style-pstricks)
+      "dvips and gv")
+     (output-dvi "xdvi")
+     (output-pdf "Atril")
+     (output-html "xdg-open"))))
  '(doc-view-continuous t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice nil)
  '(org-latex-remove-logfiles t)
  '(package-selected-packages
    (quote
-	(ac-haskell-process flycheck-haskell haskell-mode haskell-snippets haskell-tab-indent hasky-stack evil-surround browse-kill-ring kill-ring-search ess focus helm indent-guide rainbow-delimiters smex sublimity workgroups2 beacon rainbow-mode matlab-mode org-edit-latex org-trello ox-asciidoc ox-gfm ox-html5slide ox-hugo ox-ioslide ox-minutes ox-pandoc mediawiki ox-mediawiki ac-clang ac-html ac-math aggressive-indent solarized-theme monokai-theme latex-extra latex-math-preview latex-pretty-symbols latex-preview-pane org-ac org-beautify-theme company-auctex flyspell-popup tuareg markdown-preview-mode org evil markdown-preview-eww markdown-mode+ markdown-mode auctex)))
+    (poly-R poly-markdown poly-org polymode ac-haskell-process flycheck-haskell haskell-mode haskell-snippets haskell-tab-indent hasky-stack evil-surround browse-kill-ring kill-ring-search ess focus helm indent-guide rainbow-delimiters smex sublimity workgroups2 beacon rainbow-mode matlab-mode org-edit-latex org-trello ox-asciidoc ox-gfm ox-html5slide ox-hugo ox-ioslide ox-minutes ox-pandoc mediawiki ox-mediawiki ac-clang ac-html ac-math aggressive-indent solarized-theme monokai-theme latex-extra latex-math-preview latex-pretty-symbols latex-preview-pane org-ac org-beautify-theme company-auctex flyspell-popup tuareg markdown-preview-mode org evil markdown-preview-eww markdown-mode+ markdown-mode auctex)))
  '(undo-tree-auto-save-history t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -249,13 +249,17 @@
 (load "tutch-mode")
 
 ;; R stuff
-;; Allow evaluation of R and latex
+;; Allow evaluation of R and latex in org-mode
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((R . t)
    (latex . t)))
 ;; No confirmation for evaluation
 (setq org-confirm-babel-evaluate nil)
+
+;; R Markdown for .Rmd files
+(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown-mode))
+
 
 ;; Secondary file to load for things not included in the git repository/local customizations
 (load-file "~/.emacs.local")
