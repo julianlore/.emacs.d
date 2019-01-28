@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Rsource
+# key: rsrc
+# --
+#+BEGIN_SRC R :results output org
+${1:}
+#+END_SRC
