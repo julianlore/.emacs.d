@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: stackrelref
+# key: str
+# --
+\stackrel{\text{by (\ref{eq:${1:1}})}}{${2:=}}
