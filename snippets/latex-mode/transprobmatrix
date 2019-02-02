@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: transprobmatrix
+# key: tpm
+# --
+\begin{blockarray}{${1:ccc}}
+\\
+\begin{block}{${1:ccc}}
+\\
+\end{block}
+\end{blockarray}

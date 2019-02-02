@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dfracparen
+# key: dfp
+# --
+\left(\dfrac{${1}}{${2}}\right)
