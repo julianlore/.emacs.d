@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: exists_assump
+# key: easu
+# --
+\AXC{}
+\RL{${1:w}}
+\UIC{$A(a)$}
+\AXC{}
+\UIC{$a:\tau$}
