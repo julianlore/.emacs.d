@@ -121,6 +121,15 @@
 ;;
 (add-hook 'org-mode-hook 'org-ac)
 
+;; Org export to another folder
+(defun org-export-output-file-name-modified (orig-fun extension &optional subtreep pub-dir)
+  (unless pub-dir
+    (setq pub-dir "exported-org-files")
+    (unless (file-directory-p pub-dir)
+      (make-directory pub-dir)))
+  (apply orig-fun extension subtreep pub-dir nil))
+(advice-add 'org-export-output-file-name :around #'org-export-output-file-name-modified)
+
 ;; More LaTeX stuff
 ;; Default to xetex and compile to pdf
 (setq-default TeX-engine 'xetex)
