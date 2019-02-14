@@ -3,8 +3,11 @@
 # key: tpm
 # --
 \begin{blockarray}{${1:ccc}}
-\\
-\begin{block}{${1:ccc}}
-\\
+& 1 & 2 & 3 \\\\
+\begin{block}{${1:c(ccc)}}
+1
+\\\\ 2
+\\\\ 3
+\\\\
 \end{block}
 \end{blockarray}

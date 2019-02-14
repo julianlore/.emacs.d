@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: colorbox
+# key: cb
+# --
+\colorbox{${1:color}}{${2:text}}

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fracparen
+# key: frp
+# --
+\left(\frac{${1:num}}{${2:den}}\right)
