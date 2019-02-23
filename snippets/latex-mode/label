@@ -2,4 +2,4 @@
 # name: label
 # key: lab
 # --
-\label{${1:eq:1}}
+\label{eq:${1:1}}

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: finite_pop_correction
+# key: fpc
+# --
+\left(1 - \frac{n}{N}\right)

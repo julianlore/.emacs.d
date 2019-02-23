@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: numberlabel
+# key: nlab
+# --
+\numberthis{\label{eq:${1:1}}}
