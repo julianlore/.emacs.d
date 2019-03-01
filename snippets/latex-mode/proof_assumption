@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: proof_assumption
+# key: pasu
+# --
+\AXC{$\mathcal{${1:D}}_{${2:1}}$}
+\noLine
+\UIC{${3:asu}}
