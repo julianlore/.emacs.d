@@ -1,0 +1,3 @@
+[submodule "external/Beluga"]
+	path = external/Beluga
+	url = https://github.com/Beluga-lang/Beluga.git
