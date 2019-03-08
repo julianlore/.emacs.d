@@ -264,6 +264,7 @@
 
 ;; Load tutch-mode from local elisp dir
 (load "tutch-mode")
+(load "beluga-mode")
 
 ;; R stuff
 ;; Allow evaluation of R and latex in org-mode
