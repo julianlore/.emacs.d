@@ -10,6 +10,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-source-correlate-mode t)
+ '(TeX-source-correlate-start-server t)
  '(TeX-view-program-selection
    (quote
     (((output-dvi has-no-display-manager)
@@ -17,7 +18,7 @@
      ((output-dvi style-pstricks)
       "dvips and gv")
      (output-dvi "xdvi")
-     (output-pdf "Atril")
+     (output-pdf "xdg-open")
      (output-html "xdg-open"))))
  '(doc-view-continuous t)
  '(inhibit-startup-screen t)
