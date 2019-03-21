@@ -148,6 +148,7 @@
 ;; 	  )
 ;; (add-hook 'LaTeX-mode-hook 'latex-preview-pane-mode)
 (add-hook 'LaTeX-mode-hook 'company-mode)
+(add-hook 'LaTeX-mode-hook 'flycheck-mode)
 
 ;; Tuareg
 (add-hook 'tuareg-interactive-mode-hook
@@ -212,7 +213,7 @@
 			 (define-key local-set-key (kbd "$") 'self-insert-command)))
 ;; (eval-after-load 'LaTeX
 ;;   (progn
-;;     (define-key LaTeX-mode-map (kbd "\C-f") nil))) 
+;;     (define-key LaTeX-mode-map (kbd "\C-f") nil)))
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings 'meta))
 ;; (require 'merlin)
