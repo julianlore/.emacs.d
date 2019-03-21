@@ -262,6 +262,9 @@
 ;; Add auto-fill to text-mode by default
 (add-hook 'text-mode-hook 'auto-fill-mode)
 
+;; Delete whitespace on save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Load tutch-mode from local elisp dir
 (load "tutch-mode")
 (load "beluga-mode")
