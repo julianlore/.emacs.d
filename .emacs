@@ -150,7 +150,7 @@
 ;; (add-hook 'LaTeX-mode-hook 'latex-preview-pane-mode)
 (add-hook 'LaTeX-mode-hook 'company-mode)
 (add-hook 'LaTeX-mode-hook 'flycheck-mode)
-(add-hook 'LaTeX-mode-hook 'magic-latex-buffer)
+;; (add-hook 'LaTeX-mode-hook 'magic-latex-buffer)
 (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
 ;; (setq magic-latex-enable-block-highlight nil
 ;;       magic-latex-enable-suscript        t
