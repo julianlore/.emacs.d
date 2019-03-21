@@ -20,6 +20,7 @@
      (output-dvi "xdvi")
      (output-pdf "xdg-open")
      (output-html "xdg-open"))))
+ '(cdlatex-paired-parens "$[{(")
  '(doc-view-continuous t)
  '(inhibit-startup-screen t)
  '(initial-buffer-choice nil)
