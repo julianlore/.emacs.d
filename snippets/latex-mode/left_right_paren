@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: lrparen
+# Assume ) is inserted from auto closing parens
+# key: lr(
+# --
+\left(${1}\right
