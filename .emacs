@@ -301,5 +301,8 @@
 ;;       scroll-conservatively 10000
 ;;       scroll-preserve-screen-position 1)
 
+;; Open new frames instead of windows
+(setq pop-up-frames t)
+
 ;; Secondary file to load for things not included in the git repository/local customizations
 (load-file "~/.emacs.local")
