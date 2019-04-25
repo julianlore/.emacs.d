@@ -27,7 +27,7 @@
  '(org-latex-remove-logfiles t)
  '(package-selected-packages
    (quote
-    (bison-mode lex dockerfile-mode cdlatex magic-latex-buffer flycheck-golangci-lint go-mode go-snippets hindent smooth-scrolling ac-haskell-process flycheck-haskell haskell-mode haskell-snippets haskell-tab-indent hasky-stack evil-surround browse-kill-ring kill-ring-search ess focus helm indent-guide rainbow-delimiters smex sublimity workgroups2 beacon rainbow-mode matlab-mode org-edit-latex org-trello ox-asciidoc ox-gfm ox-html5slide ox-hugo ox-ioslide ox-minutes ox-pandoc mediawiki ox-mediawiki ac-clang ac-html ac-math aggressive-indent solarized-theme monokai-theme latex-extra latex-math-preview latex-pretty-symbols latex-preview-pane org-ac org-beautify-theme company-auctex flyspell-popup tuareg markdown-preview-mode org evil markdown-preview-eww markdown-mode+ markdown-mode auctex)))
+    (yasnippet-snippets bison-mode lex dockerfile-mode cdlatex magic-latex-buffer flycheck-golangci-lint go-mode go-snippets hindent smooth-scrolling ac-haskell-process flycheck-haskell haskell-mode haskell-snippets haskell-tab-indent hasky-stack evil-surround browse-kill-ring kill-ring-search ess focus helm indent-guide rainbow-delimiters smex sublimity workgroups2 beacon rainbow-mode matlab-mode org-edit-latex org-trello ox-asciidoc ox-gfm ox-html5slide ox-hugo ox-ioslide ox-minutes ox-pandoc mediawiki ox-mediawiki ac-clang ac-html ac-math aggressive-indent solarized-theme monokai-theme latex-extra latex-math-preview latex-pretty-symbols latex-preview-pane org-ac org-beautify-theme company-auctex flyspell-popup tuareg markdown-preview-mode org evil markdown-preview-eww markdown-mode+ markdown-mode auctex)))
  '(undo-tree-auto-save-history t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -119,6 +119,8 @@
 ;; Auto-load yasnippet
 (require 'yasnippet)
 (yas-global-mode t)
+;; Allow nested snippet triggers
+(setq yas-triggers-in-field t)
 
 ;;
 (add-hook 'org-mode-hook 'org-ac)
