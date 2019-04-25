@@ -2,4 +2,4 @@
 # name: abs
 # key: abs
 # --
-\left|${1:thing}\right|
+\left|$1\right|

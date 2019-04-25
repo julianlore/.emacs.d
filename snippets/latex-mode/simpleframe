@@ -3,5 +3,5 @@
 # key: sf
 # --
 \begin{mdframed}[style=SimpleFrame]
-	${1}
+	$0
 \end{mdframed}

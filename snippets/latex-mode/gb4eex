@@ -4,5 +4,5 @@
 # --
 \begin{exe}
 \ex\label{ex${1}}
-${2}
+$0
 \end{exe}

@@ -3,5 +3,5 @@
 # key: rsrc
 # --
 #+BEGIN_SRC R :results output org
-${1:}
+$0
 #+END_SRC

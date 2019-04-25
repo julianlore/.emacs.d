@@ -4,7 +4,7 @@
 # --
 \begin{blockarray}{${1:cccc}}
 & 1 & 2 & 3 \\\\
-\begin{block}{${1:c(ccc)}}
+\begin{block}{$1}
 1
 \\\\ 2
 \\\\ 3

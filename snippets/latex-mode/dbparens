@@ -2,4 +2,4 @@
 # name: delimited paren
 # key: ()
 # --
-\left(${1}\right)
+\left($1\right)
