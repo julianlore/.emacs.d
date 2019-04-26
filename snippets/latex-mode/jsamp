@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: jsamp
+# key: jsamp
+# --
+\sum_{j \in \Omega_i}

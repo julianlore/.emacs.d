@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: isamp
+# key: isamp
+# --
+\sum_{i \in \Omega}
