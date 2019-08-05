@@ -39,6 +39,8 @@
 ;; Add Melpa to package list
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+
 ;; Local elisp lib dir
 (add-to-list 'load-path "~/.emacs.d/local")
 
@@ -142,7 +144,7 @@
 ;; Disable remap of C-c C-f from latex-extra-mode
 (defvar latex/override-font-map nil)
 (add-hook 'LaTeX-mode-hook 'latex-extra-mode)
-(latex-preview-pane-enable)
+;; (latex-preview-pane-enable)
 ;; Enable preview pane mode by default
 ;; (add-hook 'LaTeX-mode-hook
 ;; 	  (lambda ()
@@ -181,8 +183,8 @@
 (global-set-key [3 67108911] (quote comment-line))
 
 ;; Fonts
-(add-to-list 'default-frame-alist
-			 '(font . "Fira Code-12"))
+;; (add-to-list 'default-frame-alist
+;;              '(font . "Fira Code-12"))
 
 (global-aggressive-indent-mode 1)
 (ac-config-default)
