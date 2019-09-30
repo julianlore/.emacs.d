@@ -18,7 +18,7 @@
      ((output-dvi style-pstricks)
       "dvips and gv")
      (output-dvi "xdvi")
-     (output-pdf "xdg-open")
+     (output-pdf "Evince")
      (output-html "xdg-open"))))
  '(cdlatex-paired-parens "$[{(")
  '(doc-view-continuous t)
