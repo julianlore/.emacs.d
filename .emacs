@@ -27,7 +27,7 @@
  '(org-latex-remove-logfiles t)
  '(package-selected-packages
    (quote
-    (powershell doom-modeline yasnippet-snippets bison-mode lex dockerfile-mode cdlatex magic-latex-buffer flycheck-golangci-lint go-mode go-snippets hindent smooth-scrolling ac-haskell-process flycheck-haskell haskell-mode haskell-snippets haskell-tab-indent hasky-stack evil-surround browse-kill-ring kill-ring-search ess focus helm indent-guide rainbow-delimiters smex sublimity workgroups2 beacon rainbow-mode matlab-mode org-edit-latex org-trello ox-asciidoc ox-gfm ox-html5slide ox-hugo ox-ioslide ox-minutes ox-pandoc mediawiki ox-mediawiki ac-clang ac-html ac-math aggressive-indent solarized-theme monokai-theme latex-extra latex-math-preview latex-pretty-symbols latex-preview-pane org-ac org-beautify-theme company-auctex flyspell-popup tuareg markdown-preview-mode org evil markdown-preview-eww markdown-mode+ markdown-mode auctex)))
+    (imenu-anywhere imenu-list popup-imenu powershell doom-modeline yasnippet-snippets bison-mode lex dockerfile-mode cdlatex magic-latex-buffer flycheck-golangci-lint go-mode go-snippets hindent smooth-scrolling ac-haskell-process flycheck-haskell haskell-mode haskell-snippets haskell-tab-indent hasky-stack evil-surround browse-kill-ring kill-ring-search ess focus helm indent-guide rainbow-delimiters smex sublimity workgroups2 beacon rainbow-mode matlab-mode org-edit-latex org-trello ox-asciidoc ox-gfm ox-html5slide ox-hugo ox-ioslide ox-minutes ox-pandoc mediawiki ox-mediawiki ac-clang ac-html ac-math aggressive-indent solarized-theme monokai-theme latex-extra latex-math-preview latex-pretty-symbols latex-preview-pane org-ac org-beautify-theme company-auctex flyspell-popup tuareg markdown-preview-mode org evil markdown-preview-eww markdown-mode+ markdown-mode auctex)))
  '(undo-tree-auto-save-history t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -62,6 +62,10 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
+
+;; org-goto
+(setq org-goto-interface 'outline-path-completion)
+(setq org-outline-path-complete-in-steps nil)
 
 ;; Fix reference to free variable when using workgroups2 to restore open files
 (defvar latex-mode)
@@ -326,6 +330,9 @@
 (setq vc-follow-symlinks t)
 
 (doom-modeline-mode 1)
+
+;; imenu-list keyboard shortcut
+(global-set-key (kbd "C-'") #'imenu-list-smart-toggle)
 
 ;; Secondary file to load for things not included in the git repository/local customizations
 (load-file "~/.emacs.local")
