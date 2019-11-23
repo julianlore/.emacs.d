@@ -27,7 +27,7 @@
  '(org-latex-remove-logfiles t)
  '(package-selected-packages
    (quote
-    (imenu-anywhere imenu-list popup-imenu powershell doom-modeline yasnippet-snippets bison-mode lex dockerfile-mode cdlatex magic-latex-buffer flycheck-golangci-lint go-mode go-snippets hindent smooth-scrolling ac-haskell-process flycheck-haskell haskell-mode haskell-snippets haskell-tab-indent hasky-stack evil-surround browse-kill-ring kill-ring-search ess focus helm indent-guide rainbow-delimiters smex sublimity workgroups2 beacon rainbow-mode matlab-mode org-edit-latex org-trello ox-asciidoc ox-gfm ox-html5slide ox-hugo ox-ioslide ox-minutes ox-pandoc mediawiki ox-mediawiki ac-clang ac-html ac-math aggressive-indent solarized-theme monokai-theme latex-extra latex-math-preview latex-pretty-symbols latex-preview-pane org-ac org-beautify-theme company-auctex flyspell-popup tuareg markdown-preview-mode org evil markdown-preview-eww markdown-mode+ markdown-mode auctex)))
+    (rainbow-delimiters company solarized-theme yasnippet aggressive-indent haskell-mode go-mode smooth-scrolling imenu-list doom-modeline rainbow-mode sublimity smex indent-guide focus evil undo-tree auto-package-update use-package)))
  '(undo-tree-auto-save-history t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -41,35 +41,166 @@
 
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
+;; Org-mode repo
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
 ;; Local elisp lib dir
 (add-to-list 'load-path "~/.emacs.d/local")
 
-;; Enabling evil mode (Vi controls)
-(require 'evil)
-(evil-mode 1)
+;; Install use-package if it isn't installed to allow installing packages that aren't installed
+(if (not (package-installed-p 'use-package))
+    (progn
+      (package-refresh-contents)
+      (package-install 'use-package)))
 
-;; Evil mode fine undo for granularity of undo
-(setq evil-want-fine-undo t)
-;; Enable surround mode for evil, easier manipulation of brackets
-(global-evil-surround-mode 1)
+(require 'use-package)
 
-;; Org-mode repo
-(require 'package)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;; Auto-update every 2 days
+(use-package auto-package-update
+  :ensure t
+  :config
+  (setq auto-package-update-delete-old-versions t
+        auto-package-update-interval 2)
+  (auto-package-update-maybe))
+;; Always ensure
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Package configurations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Org-mode keybindings
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-cb" 'org-iswitchb)
+;; Install packages listed in 'package-selected-packages
+;; (package-initialize)
+;; (unless package-archive-contents
+;;   (package-refresh-contents))
+;; (package-install-selected-packages)
 
-;; org-goto
-(setq org-goto-interface 'outline-path-completion)
-(setq org-outline-path-complete-in-steps nil)
+(use-package markdown-mode)
+(use-package imenu-anywhere)
+(use-package popup-imenu)
+(use-package powershell)
+(use-package yasnippet-snippets)
+(use-package bison-mode)
+(use-package lex)
+(use-package dockerfile-mode)
+(use-package flycheck-golangci-lint)
+(use-package go-snippets)
+(use-package hindent)
+(use-package ac-haskell-process)
+(use-package flycheck-haskell)
+(use-package haskell-snippets)
+(use-package haskell-tab-indent)
+(use-package browse-kill-ring)
+(use-package kill-ring-search)
+(use-package indent-guide)
+(use-package latex-math-preview)
+;; (use-package matlab-mode)
+(use-package org-ac)
+(use-package org-edit-latex)
+(use-package org-beautify-theme)
+(use-package company-auctex)
+
+(use-package undo-tree)
+
+(use-package evil
+  :init (evil-mode 1)
+  :config (setq evil-want-fine-undo t))
+
+(use-package evil-surround
+  :init (global-evil-surround-mode 1))
+
+(use-package org
+  :bind (("\C-cl" . org-store-link)
+         ("\C-ca" . org-agenda)
+         ("\C-cc" . org-capture)
+         ("\C-cb" . org-iswitchb))
+  :config
+  ;; org-goto
+  (setq org-goto-interface 'outline-path-completion)
+  (setq org-outline-path-complete-in-steps nil))
+
+;;(use-package helm
+;;  :defer t)
+
+(use-package focus
+  :init (focus-mode 1))
+
+(use-package indent-guide
+  :init (indent-guide-global-mode))
+
+(use-package smex
+  :bind (("M-x" . smex)
+	 ("M-X" . smex-major-mode-commands)
+	 ("C-c C-c M-x" . execute-extended-command))
+  :init (smex-initialize))
+
+(use-package sublimity
+  :init (sublimity-mode 1))
+
+(use-package beacon
+  :init (beacon-mode 1))
+
+(use-package rainbow-mode
+  :init (rainbow-mode 1))
+
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-mode))
+
+(use-package reftex
+  :hook ((LaTeX-mode-hook . turn-on-reftex)   ; with AUCTeX LaTeX mode
+         (latex-mode-hook . turn-on-reftex)   ; with Emacs latex mode
+         ))
+
+(use-package imenu-list
+  :bind ("C-'" . imenu-list-smart-toggle))
+
+(use-package smooth-scrolling
+  :init (smooth-scrolling-mode 1))
+
+(use-package go-mode
+  :hook (go-mode-hook . flycheck-mode))
+
+(use-package haskell-mode
+  :hook ((haskell-mode-hook . hindent-mode)
+         (haskell-mode-hook . flycheck-mode)))
+
+(use-package aggressive-indent
+  :init (global-aggressive-indent-mode 1))
+
+(use-package tuareg
+  :hook (tuareg-interactive-mode-hook . (lambda ()
+                                          (local-set-key (kbd "<up>") 'comint-previous-input)
+                                          )))
+
+(use-package yasnippet
+  :init (yas-global-mode t)
+  :config (setq yas-triggers-in-field t))
+
+(use-package solarized-theme
+  :init (load-theme 'solarized-dark t))
+
+(use-package company
+  :init (company-mode 1))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode-hook . rainbow-delimiters-mode))
+
+(use-package flyspell
+  :hook ((org-mode-hook . turn-on-flyspell)
+         (text-mode-hook . flyspell-mode)
+         (prog-mode-hook . flyspell-prog-mode)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; END OF USE-PACKAGEs
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Load tutch-mode from local elisp dir
+(load "tutch-mode")
+(load "beluga-mode")
 
 ;; Fix reference to free variable when using workgroups2 to restore open files
-(defvar latex-mode)
-(defvar latex-extra-mode)
+;; (defvar latex-mode)
+;; (defvar latex-extra-mode)
 
 ;; Enable column-number-mode by default
 (setq column-number-mode t)
@@ -90,17 +221,12 @@
   '(setf org-highlight-latex-and-related '(latex)))
 
 ;; Keybindings
-(global-set-key (kbd "C-z") 'undo) ; Ctrl+z undo
-(global-set-key (kbd "C-y") 'redo) ; Ctrl+y redo
+;;(global-set-key (kbd "C-z") 'undo) ; Ctrl+z undo
+;;(global-set-key (kbd "C-y") 'redo) ; Ctrl+y redo
 
 ;; Change spellchecker to aspell
 (setq-default ispell-program-name "aspell")
 (setq ispell-list-command "--list")
-
-;; Enable flyspell by default in the following modes
-(add-hook 'org-mode-hook 'turn-on-flyspell)
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 ;; Enable flyspell-popup to automatically popup
 (add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode)
@@ -112,23 +238,6 @@
 (add-hook 'latex-mode-hook 'turn-on-outline-minor-mode)
 (setq outline-minor-mode-prefix "\C-c \C-o")
 
-;; RefTeX
-(require 'reftex)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
-(add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
-
-(load-theme 'solarized-dark t)
-
-;; Company mode
-(company-mode 1)
-
-;; Auto-load yasnippet
-(require 'yasnippet)
-(yas-global-mode t)
-;; Allow nested snippet triggers
-(setq yas-triggers-in-field t)
-
-;;
 (add-hook 'org-mode-hook 'org-ac)
 
 ;; Org export to another folder
@@ -169,30 +278,15 @@
 ;;       magic-latex-enable-minibuffer-echo nil)
 
 
-;; Tuareg
-(add-hook 'tuareg-interactive-mode-hook
-	  (lambda ()
-	    (local-set-key (kbd "<up>") 'comint-previous-input)
-	    )
-	  )
-
-;; Haskell, modes to enable by default
-(add-hook 'haskell-mode-hook 'hindent-mode)
-(add-hook 'haskell-mode-hook 'flycheck-mode)
-
-;; Golang
-(add-hook 'go-mode-hook 'flycheck-mode)
-
 ;; Commenting
 ;; C-x C-/ comments
 (global-set-key [3 67108911] (quote comment-line))
 
 ;; Fonts
-;; (add-to-list 'default-frame-alist
-;;              '(font . "Fira Code-12"))
+(add-to-list 'default-frame-alist
+             '(font . "Fira Code-11"))
 
-(global-aggressive-indent-mode 1)
-(ac-config-default)
+;;(ac-config-default)
 ;; C
 (setq-default c-basic-offset 4 c-default-style "linux")
 ;; (setq-default tab-width 4 indent-tabs-mode t)
@@ -235,40 +329,6 @@
 ;;     (define-key LaTeX-mode-map (kbd "\C-f") nil)))
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings 'meta))
-;; (require 'merlin)
-(require 'helm-config)
-
-(require 'focus)
-(focus-mode 1)
-
-(require 'indent-guide)
-(indent-guide-global-mode)
-
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-
-(require 'smex) ; Not needed if you use package.el
-(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
-					; when Smex is auto-initialized on its first run.
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-;; (require 'sublimity)
-;; (require 'sublimity-scroll)
-;; (require 'sublimity-map) ;; experimental
-;; (require 'sublimity-attractive)
-
-(sublimity-mode 1)
-
-;; (require 'workgroups2)
-;; Change some settings
-;; (workgroups-mode 1)        ; put this one at the bottom of .emacs
-
-(beacon-mode 1)
-
-(require 'rainbow-mode)
-(rainbow-mode 1)
 
 ;; Shortcut to browse kill ring
 (global-set-key (kbd "C-x p") 'browse-kill-ring)
@@ -276,18 +336,14 @@
 (setq smerge-command-prefix "\C-cv")
 
 ;; Add ox-hugo support, export org files to Hugo compatible md
-(with-eval-after-load 'ox
-  (require 'ox-hugo))
+;; (with-eval-after-load 'ox
+;;   (require 'ox-hugo))
 
 ;; Add auto-fill to text-mode by default
 (add-hook 'text-mode-hook 'auto-fill-mode)
 
 ;; Delete whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; Load tutch-mode from local elisp dir
-(load "tutch-mode")
-(load "beluga-mode")
 
 ;; R stuff
 ;; Allow evaluation of R and latex in org-mode
@@ -300,18 +356,6 @@
 
 ;; R Markdown for .Rmd files
 ;; (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown-mode))
-
-;; Smooth scrolling
-(require 'smooth-scrolling)
-(smooth-scrolling-mode 1)
-;; (setq redisplay-dont-pause t
-;;       scroll-margin 1
-;;       scroll-step 1
-;;       scroll-conservatively 10000
-;;       scroll-preserve-screen-position 1)
-
-;; Open new frames instead of windows
-;; (setq pop-up-frames t)
 
 ;; Disable GUI stuff
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -328,11 +372,6 @@
 
 ;; Always follow symlinks
 (setq vc-follow-symlinks t)
-
-(doom-modeline-mode 1)
-
-;; imenu-list keyboard shortcut
-(global-set-key (kbd "C-'") #'imenu-list-smart-toggle)
 
 ;; Secondary file to load for things not included in the git repository/local customizations
 (load-file "~/.emacs.local")
