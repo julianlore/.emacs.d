@@ -27,8 +27,7 @@
  '(org-latex-remove-logfiles t)
  '(package-selected-packages
    (quote
-    (rainbow-delimiters company solarized-theme yasnippet aggressive-indent haskell-mode go-mode smooth-scrolling imenu-list doom-modeline rainbow-mode sublimity smex indent-guide focus evil undo-tree auto-package-update use-package)))
- '(undo-tree-auto-save-history t))
+    (rainbow-delimiters company solarized-theme yasnippet aggressive-indent haskell-mode go-mode smooth-scrolling imenu-list doom-modeline rainbow-mode sublimity smex indent-guide focus evil undo-tree auto-package-update use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -100,7 +99,9 @@
 (use-package org-beautify-theme)
 (use-package company-auctex)
 
-(use-package undo-tree)
+(use-package undo-tree
+  :init (global-undo-tree-mode)
+  :config (setq undo-tree-auto-save-history t))
 
 (use-package evil
   :init (evil-mode 1)
