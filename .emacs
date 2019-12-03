@@ -27,7 +27,7 @@
  '(org-latex-remove-logfiles t)
  '(package-selected-packages
    (quote
-    (rainbow-delimiters company solarized-theme yasnippet aggressive-indent haskell-mode go-mode smooth-scrolling imenu-list doom-modeline rainbow-mode sublimity smex indent-guide focus evil undo-tree auto-package-update use-package))))
+    (flyspell-popup rainbow-delimiters company solarized-theme yasnippet aggressive-indent haskell-mode go-mode smooth-scrolling imenu-list doom-modeline rainbow-mode sublimity smex indent-guide focus evil undo-tree auto-package-update use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -98,6 +98,11 @@
 (use-package org-edit-latex)
 (use-package org-beautify-theme)
 (use-package company-auctex)
+(use-package ess)
+(use-package polymode)
+
+(use-package latex
+  :ensure auctex)
 
 (use-package undo-tree
   :init (global-undo-tree-mode)
@@ -148,8 +153,8 @@
   :hook (after-init . doom-modeline-mode))
 
 (use-package reftex
-  :hook ((LaTeX-mode-hook . turn-on-reftex)   ; with AUCTeX LaTeX mode
-         (latex-mode-hook . turn-on-reftex)   ; with Emacs latex mode
+  :hook ((LaTeX-mode . turn-on-reftex)   ; with AUCTeX LaTeX mode
+         (latex-mode . turn-on-reftex)   ; with Emacs latex mode
          ))
 
 (use-package imenu-list
@@ -159,19 +164,19 @@
   :init (smooth-scrolling-mode 1))
 
 (use-package go-mode
-  :hook (go-mode-hook . flycheck-mode))
+  :hook (go-mode . flycheck-mode))
 
 (use-package haskell-mode
-  :hook ((haskell-mode-hook . hindent-mode)
-         (haskell-mode-hook . flycheck-mode)))
+  :hook ((haskell-mode . hindent-mode)
+         (haskell-mode . flycheck-mode)))
 
 (use-package aggressive-indent
   :init (global-aggressive-indent-mode 1))
 
 (use-package tuareg
-  :hook (tuareg-interactive-mode-hook . (lambda ()
-                                          (local-set-key (kbd "<up>") 'comint-previous-input)
-                                          )))
+  :hook (tuareg-interactive-mode . (lambda ()
+                                     (local-set-key (kbd "<up>") 'comint-previous-input)
+                                     )))
 
 (use-package yasnippet
   :init (yas-global-mode t)
@@ -184,12 +189,17 @@
   :init (company-mode 1))
 
 (use-package rainbow-delimiters
-  :hook (prog-mode-hook . rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
+(add-hook 'LaTeX-mode-hook 'rainbow-delimiters-mode)
 (use-package flyspell
-  :hook ((org-mode-hook . turn-on-flyspell)
-         (text-mode-hook . flyspell-mode)
-         (prog-mode-hook . flyspell-prog-mode)))
+  :hook ((org-mode . turn-on-flyspell)
+         (text-mode . flyspell-mode)
+         (prog-mode . flyspell-prog-mode)
+         (flyspell-mode . flyspell-popup-auto-correct-mode)))
+
+(use-package flyspell-popup
+  :hook (flyspell-mode . flyspell-popup-auto-correct-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; END OF USE-PACKAGEs
@@ -199,9 +209,9 @@
 (load "tutch-mode")
 (load "beluga-mode")
 
-;; Fix reference to free variable when using workgroups2 to restore open files
-;; (defvar latex-mode)
-;; (defvar latex-extra-mode)
+;; Fix reference to free variable
+(defvar latex-mode)
+(defvar latex-extra-mode)
 
 ;; Enable column-number-mode by default
 (setq column-number-mode t)
@@ -229,10 +239,8 @@
 (setq-default ispell-program-name "aspell")
 (setq ispell-list-command "--list")
 
-;; Enable flyspell-popup to automatically popup
-(add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode)
 (defun turn-on-outline-minor-mode ()
-(outline-minor-mode 1))
+  (outline-minor-mode 1))
 
 ;; Outline mode in LaTeX
 (add-hook 'LaTeX-mode-hook 'turn-on-outline-minor-mode)
