@@ -99,7 +99,10 @@
 (use-package org-beautify-theme)
 (use-package company-auctex)
 (use-package ess)
-(use-package polymode)
+(use-package polymode
+  :ensure markdown-mode
+  :ensure poly-R
+  :mode ("\\.Rmd" . poly-markdown+r-mode))
 
 (use-package latex
   :ensure auctex)
