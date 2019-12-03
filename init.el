@@ -217,6 +217,8 @@
 (defvar latex-mode)
 (defvar latex-extra-mode)
 
+(setq gc-cons-threshold 100000000)
+
 ;; Enable column-number-mode by default
 (setq column-number-mode t)
 
@@ -387,4 +389,4 @@
 (setq vc-follow-symlinks t)
 
 ;; Secondary file to load for things not included in the git repository/local customizations
-(load-file "~/.emacs.local")
+(load-file "~/.emacs.d/.emacs.local")

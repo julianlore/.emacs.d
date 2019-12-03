@@ -8,3 +8,4 @@ elpa/archives
 bookmarks
 .last-package-update-day
 .cache
+.emacs.local
