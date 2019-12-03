@@ -192,7 +192,8 @@
   :init (company-mode 1))
 
 (use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook ((prog-mode . rainbow-delimiters-mode)
+         (text-mode . rainbow-delimiters-mode)))
 
 (add-hook 'LaTeX-mode-hook 'rainbow-delimiters-mode)
 (use-package flyspell
